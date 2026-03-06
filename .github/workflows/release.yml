@@ -1,0 +1,51 @@
+name: Release Alfred Workflow
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Get version from info.plist
+        id: version
+        run: |
+          VERSION=$(grep -A1 '<key>version</key>' workflow/info.plist | grep '<string>' | sed 's/.*<string>\(.*\)<\/string>/\1/')
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+
+      - name: Check if release already exists
+        id: check_release
+        run: |
+          TAG="v${{ steps.version.outputs.version }}"
+          if gh release view "$TAG" > /dev/null 2>&1; then
+            echo "exists=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "exists=false" >> "$GITHUB_OUTPUT"
+          fi
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build .alfredworkflow
+        if: steps.check_release.outputs.exists == 'false'
+        run: |
+          cd workflow
+          zip -r "../Image-Clipper.alfredworkflow" . -x ".*"
+
+      - name: Create GitHub Release
+        if: steps.check_release.outputs.exists == 'false'
+        run: |
+          TAG="v${{ steps.version.outputs.version }}"
+          gh release create "$TAG" \
+            --title "Image Clipper $TAG" \
+            --generate-notes \
+            "Image-Clipper.alfredworkflow#Image-Clipper.alfredworkflow"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
