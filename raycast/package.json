@@ -1,0 +1,54 @@
+{
+  "$schema": "https://www.raycast.com/schemas/extension.json",
+  "name": "image-clipper",
+  "title": "Image Clipper",
+  "description": "Browse images in a directory and copy the selected one to your clipboard as PNG",
+  "icon": "extension-icon.png",
+  "author": "tetsumaru",
+  "categories": [
+    "Productivity",
+    "Media"
+  ],
+  "platforms": [
+    "macOS"
+  ],
+  "license": "MIT",
+  "commands": [
+    {
+      "name": "browse-images",
+      "title": "Browse Images",
+      "description": "Browse images in a directory and copy one to your clipboard",
+      "mode": "view"
+    }
+  ],
+  "preferences": [
+    {
+      "name": "imageDirectory",
+      "title": "Image Directory",
+      "description": "Path to the directory containing images",
+      "type": "directory",
+      "required": false,
+      "default": "~/imageclipper"
+    }
+  ],
+  "dependencies": {
+    "@raycast/api": "^1.93.0",
+    "@raycast/utils": "^1.19.0"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.3.5",
+    "@raycast/eslint-config": "^2.1.1",
+    "@types/node": "~22.13.0",
+    "@types/react": "~19.0.0",
+    "eslint": "^9.22.0",
+    "prettier": "^3.5.0",
+    "typescript": "^5.8.0"
+  },
+  "scripts": {
+    "build": "ray build",
+    "dev": "ray develop",
+    "fix-lint": "ray lint --fix",
+    "lint": "ray lint",
+    "publish": "npx @raycast/api@latest publish"
+  }
+}
