@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>com.tetsumaru.imageclipper</string>
+	<key>category</key>
+	<string>Tools</string>
+	<key>connections</key>
+	<dict>
+		<key>7A8B9C0D-1E2F-3A4B-5C6D-7E8F9A0B1C2D</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>8B9C0D1E-2F3A-4B5C-6D7E-8F9A0B1C2D3E</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>8B9C0D1E-2F3A-4B5C-6D7E-8F9A0B1C2D3E</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>9C0D1E2F-3A4B-5C6D-7E8F-9A0B1C2D3E4F</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>tetsumaru</string>
+	<key>description</key>
+	<string>Browse images in a directory and copy the selected one to the clipboard</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>Image Clipper</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<true/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>2</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<false/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>0</integer>
+				<key>keyword</key>
+				<string>img</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyalinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string>Loading images…</string>
+				<key>script</key>
+				<string>/usr/bin/python3 list_images.py</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>subtext</key>
+				<string>Search images to copy to clipboard</string>
+				<key>title</key>
+				<string>Image Clipper</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>7A8B9C0D-1E2F-3A4B-5C6D-7E8F9A0B1C2D</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>0</integer>
+				<key>script</key>
+				<string>./clip_image.sh "{query}"</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>8B9C0D1E-2F3A-4B5C-6D7E-8F9A0B1C2D3E</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>lastpathcomponent</key>
+				<true/>
+				<key>onlyshowifquerypopulated</key>
+				<false/>
+				<key>removeextension</key>
+				<false/>
+				<key>text</key>
+				<string>Copied to clipboard</string>
+				<key>title</key>
+				<string>Image Clipper</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>9C0D1E2F-3A4B-5C6D-7E8F-9A0B1C2D3E4F</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string>Image Clipper – Alfred Workflow
+
+Browse images from a specified directory and copy the selected one to your clipboard as PNG.
+
+Setup:
+1. Set the IMG_DIR workflow variable to point to your image directory (default: ~/imageclipper)
+2. Trigger with keyword "img"
+3. Select an image to copy it to your clipboard</string>
+	<key>uidata</key>
+	<dict>
+		<key>7A8B9C0D-1E2F-3A4B-5C6D-7E8F9A0B1C2D</key>
+		<dict>
+			<key>xpos</key>
+			<real>100</real>
+			<key>ypos</key>
+			<real>200</real>
+		</dict>
+		<key>8B9C0D1E-2F3A-4B5C-6D7E-8F9A0B1C2D3E</key>
+		<dict>
+			<key>xpos</key>
+			<real>350</real>
+			<key>ypos</key>
+			<real>200</real>
+		</dict>
+		<key>9C0D1E2F-3A4B-5C6D-7E8F-9A0B1C2D3E4F</key>
+		<dict>
+			<key>xpos</key>
+			<real>600</real>
+			<key>ypos</key>
+			<real>200</real>
+		</dict>
+	</dict>
+	<key>userconfigurationconfig</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string>~/imageclipper</string>
+				<key>placeholder</key>
+				<string>~/imageclipper</string>
+				<key>required</key>
+				<false/>
+				<key>trim</key>
+				<true/>
+			</dict>
+			<key>description</key>
+			<string>Path to the directory containing images</string>
+			<key>label</key>
+			<string>Image Directory</string>
+			<key>type</key>
+			<string>textfield</string>
+			<key>variable</key>
+			<string>IMG_DIR</string>
+		</dict>
+	</array>
+	<key>variables</key>
+	<dict>
+		<key>IMG_DIR</key>
+		<string>~/imageclipper</string>
+	</dict>
+	<key>version</key>
+	<string>1.0.0</string>
+	<key>webaddress</key>
+	<string>https://github.com/tetsumaru/image-clipper</string>
+</dict>
+</plist>

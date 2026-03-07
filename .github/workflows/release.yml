@@ -1,0 +1,30 @@
+name: Release Alfred Workflow
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build .alfredworkflow
+        run: |
+          cd workflow
+          zip -r "../Image-Clipper.alfredworkflow" . -x ".*"
+
+      - name: Create GitHub Release
+        run: |
+          gh release create "${{ github.ref_name }}" \
+            --title "Image Clipper ${{ github.ref_name }}" \
+            --generate-notes \
+            "Image-Clipper.alfredworkflow#Image-Clipper.alfredworkflow"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
