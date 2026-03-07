@@ -1,10 +1,12 @@
 <p align="center">
-  <img src="workflow/icon.png" alt="Image Clipper Logo" width="128" height="128">
+  <img src="workflow/icon.png" alt="Image Clipper Logo" width="200" height="200">
 </p>
 
-# Image Clipper
+<h1 align="center">Image Clipper</h1>
 
-Alfred Workflow for browsing images in a directory and copying the selected one to your clipboard.
+<p align="center">
+  Alfred Workflow for browsing images in a directory and copying the selected one to your clipboard.
+</p>
 
 ## Features
 
